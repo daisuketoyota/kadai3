@@ -7,8 +7,8 @@
       <img src=>
   <table class="table">
       <tbody>
-        <tr>
-         <th>image<th>
+         <tr>
+         <th><%= image_tag @user.get_profile_image(100,100) %></th>
          </tr>
          <tr>
 	       <th>name</th>
@@ -60,8 +60,6 @@
   <% @books.each do |book| %>
   　<td><span><%= book.title %></span></td>
   　<td><span><%= book.body %></span></td>
-  　<td><span><%= link_to 'Edit',edit_book_path(book.id)%></span></td>
-  　<td><span><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></span></td>
   </tr>
   <% end %>
   </table>

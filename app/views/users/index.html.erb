@@ -8,7 +8,7 @@
   <table class="table">
       <tbody>
         <tr>
-         <th>image<th>
+         <th><%= image_tag @user.get_profile_image(100,100) %></th>
          </tr>
          <tr>
 	       <th>name</th>
@@ -58,9 +58,9 @@
   </thead>
   <tr>
   <% @users.each do |user| %>
-  　<td><span><%= user.introduction %></span></td>
+  　<td><span><%= image_tag user.get_profile_image(100,100) %></span></td>
   　<td><span><%= user.name %></span></td>
-  　<td><span><%= link_to 'show',edit_user_path(user.id)%></span></td>
+  　<td><span><%= link_to 'show',user_path(user.id)%></span></td>
   </tr>
   <% end %>
   </table>

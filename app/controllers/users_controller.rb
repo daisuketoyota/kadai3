@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
      @book = Book.new
      @books = Book.all
-     @user = User.find(params[:id])
+     @user = current_user
   end
   
   def create
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @users = current_user
+    @user = current_user
   end
   
   def update
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    params.require(:user).permit(:name, :introduction)
+    params.require(:user).permit(:name, :introduction,:profile_image)
   end
   
 end

@@ -1,9 +1,12 @@
 <main>
-        <p id="notice">Welcome! You have signed up successfully.</p>
+        
         <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
+      <div>
+      <%= flash[:notice] %>
+      </div>
       <img src=>
   <table class="table">
       <tbody>
@@ -27,6 +30,16 @@
 </div>
 
   <h2>New Books</h2>
+  
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  
   <% if @book.errors.any? %>
   <%= @book.errors.count %>errors prohibited this book from being saved: %>
   <ul>

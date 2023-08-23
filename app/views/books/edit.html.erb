@@ -1,12 +1,23 @@
-<div>
-  <%= flash[:notice] %>
-</div>
+
 
 Edithing Book
-
-<br>Title:<%= @book.title %></br>
-
-<br>Body:<%= @book.body %></br>
+<%= form_with model: @book do |f| %>
+  
+  <br>
+  <label for="inputTitle">Title</label>
+  <br/>
+  <br>
+  <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title"%>
+  <br/>
+  <br>
+  <label for="inputBody">Body</label>
+  <br/>
+  <%= f.text_field :body, autofocus: true, id:"inputbody", placeholder:"Body"%>
+  <br/>
+  <br>
+  <%= f.submit "Update book" %>
+  <br/>
+<% end %>
 
 <br>
 <span><%= link_to 'Show',book_path(@book) %></span>

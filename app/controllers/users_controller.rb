@@ -21,9 +21,9 @@ class UsersController < ApplicationController
   end
   
   def update
-    @users = current_user
-    if @users.update(user_params)
-    flash[:notice] = "Book was successfully updated."
+    @user = current_user
+    if @user.update(user_params)
+    flash[:notice] = "User was successfully updated."
     redirect_to current_user
     else
     render :edit

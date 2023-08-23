@@ -12,11 +12,11 @@
          </tr>
          <tr>
 	       <th>name</th>
-	       <th><%= @users.name %></th>
+	       <th><%= @user.name %></th>
          </tr>
          <tr>
 	       <th>introduction</th>
-	       <th><%= @users.introduction %></th>
+	       <th><%= @user.introduction %></th>
         </tr>
       </tbody>
 </table>
@@ -28,7 +28,7 @@
 
   <h2>New Books</h2>
   <% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this book from being saved:
+  <%= @book.errors.count %>errors prohibited this book from being saved: %>
   <ul>
     <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>

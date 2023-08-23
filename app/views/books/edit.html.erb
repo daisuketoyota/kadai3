@@ -4,15 +4,13 @@
 
 Edithing Book
 
-<%= form_with model: @book, method: :post do |f| %>
-Title:
-<br>f.text_field:<%= @book.title %></br>
-Body:
-<br>f.text_area:<%= @book.body %></br>
+<br>Title:<%= @book.title %></br>
+
+<br>Body:<%= @book.body %></br>
 
 <br>
-<span><%= link_to 'Show',user_path(params[:id])%></span>
-<span><%= link_to 'Back',user_path(params[:id])%></span>
+<span><%= link_to 'Show',book_path(@book) %></span>
+<span><%= link_to 'Back',books_path %></span>
 </br>
 
 <br>CopyRight Infratop.inc<br/>

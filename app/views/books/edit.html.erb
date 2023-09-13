@@ -1,7 +1,7 @@
 
 
-Edithing Book
-<%= form_with model: @book do |f| %>
+Editing Book
+<%= form_for(@book, url: book_path(@book.id)) do |f| %>
   
   <br>
   <label for="inputTitle">Title</label>
@@ -10,17 +10,17 @@ Edithing Book
   <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title"%>
   <br/>
   <br>
-  <label for="inputBody">Body</label>
+  <label for="inputBody">Option</label>
   <br/>
   <%= f.text_field :body, autofocus: true, id:"inputbody", placeholder:"Body"%>
   <br/>
   <br>
-  <%= f.submit "Update book" %>
+  <%= f.submit "Update Book" %>
   <br/>
 <% end %>
 
 <br>
-<span><%= link_to 'Show',book_path(@book) %></span>
+<span><%= link_to 'Show',book_path %></span>
 <span><%= link_to 'Back',books_path %></span>
 </br>
 

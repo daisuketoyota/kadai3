@@ -70,16 +70,14 @@
         </div>
       </nav>
     </header>
-    
-  <div class= "body">
-
+  <main>
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
-  </div>
   
     <%= yield %>
+  </main>
   </body>
 </html>

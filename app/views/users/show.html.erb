@@ -1,5 +1,3 @@
-<main>
-  
   <div class="container px-5 px-sm-0">
   <div class="row">
   <div class="col-md-3">
@@ -7,7 +5,6 @@
   <div>
   <%= flash[:notice] %>
   </div>
-  <img src=>
   <table class="table">
       <tbody>
          <tr>
@@ -49,36 +46,36 @@
 	<h5>
   <%= f.submit 'Create Book' %>
   <% end %>
-  <h5>
-  </thead>
-  <tbody>
-  <h1>Books</h1>
-  <table width='750'>
-  <thead>
-    <th width='200'></th>
-    <th width='200'></th>
-    <th width='200'>Title</th>
-    <th width='200'>Options</th>
-    <th colspan="3" width='150'></th>
-  </thead>
+  </h5>
   
-  <tr>
-    <%  @books.each do |book| %>
-  <td>
-      <%= link_to user_path(@user.id) do %>
-      <%= image_tag @user.get_profile_image(100,100) %>
-      <% end %>
-  </td>
-  <td><span></span></td>
-  <td><span><%= link_to book.title,book_path(book.id) %></span></td>
-  <td><span><%= book.body %></span></td>
-   </tr>
-  <% end %>
+  </div>
   
-  </table>
-  </tbody>
+      <div class="col-md-8 offset-md-1">
+        <h1>Books</h1>
+            
+            
+             <table width='750'>
+          <thead>
+            <th width='200'></th>
+            <th width='200'></th>
+            <th width='200'>Title</th>
+            <th width='200'>Options</th>
+            <th colspan="3" width='150'></th>
+          </thead>
+  
+          <tr>
+            <%  @books.each do |book| %>
+            <td>
+            <%= link_to user_path(@user.id) do %>
+            <%= image_tag @user.get_profile_image(100,100) %>
+            <% end %>
+            </td>
+            <td><span></span></td>
+            <td><span><%= link_to book.title,book_path(book.id) %></span></td>
+            <td><span><%= book.body %></span></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
-
-</main>

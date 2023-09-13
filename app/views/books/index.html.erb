@@ -1,94 +1,92 @@
-<main>
-        
-        <div class="container px-5 px-sm-0">
-  　　　　<div class="row">
-    　　<div class="col-md-3">
+
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
     　　
-    　　  <h2>User info</h2>
-      　<div>
-        <%= flash[:notice] %>
-        </div>
+    　  <h2>User info</h2>
+    　 <div>
+   　   <%= flash[:notice] %>
+       </div>
       
-         <table class="table">
-         <tbody>
-         <tr>
-         <th><%= image_tag @user.get_profile_image(100,100) %></th>
-         </tr>
-         <tr>
-	       <th>name</th>
-	       <th><%= @user.name %></th>
-         </tr>
-         <tr>
-	       <th>introduction</th>
-	       <th><%= @user.introduction %></th>
+       <table class="table">
+       <tbody>
+       <tr>
+       <th><%= image_tag @user.get_profile_image(100,100) %></th>
+       </tr>
+       <tr>
+	     <th>name</th>
+	     <th><%= @user.name %></th>
+       </tr>
+       <tr>
+	     <th>introduction</th>
+	     <th><%= @user.introduction %></th>
+       </tr>
+       </tbody>
+       </table>
+       <div class="row">
+       <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block edit_user_id" do %>
+       <i class="fas fa-user-cog" aria-hidden="true"></i>
+       <% end %>
+       </div>
+
+       <h2>New book</h2>
+  
+       <% if @book.errors.any? %>
+       <%= @book.errors.count %>件のエラーが発生しました
+       <ul>
+       <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      <% end %>
+  
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %>errors prohibited this book from being saved: %>
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      <% end %>
+
+      <%= form_with model: @book, method: :post do |f| %>
+      <h4>Title</h4>
+      <%= f.text_field :title %>
+	  
+      <h4>Body</h4>
+      <%= f.text_area:body %>
+	
+	    <h5>
+      <%= f.submit 'Create Book' %>
+      <% end %>
+      </h5>
+   
+    </div>
+  
+      <div class="col-md-8 offset-md-1"> 
+      <h1>Books</h1>
+  
+  
+      <table width='750'>
+        <thead>
+        <th width='200'></th>
+        <th width='400'>Title</th>
+        <th colspan="3" width='150'>Body</th>
+        </thead>
+      <tbody>
+        <th>
+        <% @books.each do |book| %>
+        <tr>
+        <td>
+          <%= link_to user_path(book.user.id) do %>
+          <%= image_tag book.user.get_profile_image(100,100) %>
+          <% end %>
+        </td>
+        <td><span><%= link_to book.title,book_path(book.id)%></span></td>
+        <td><span><%= book.body %></span></td>
         </tr>
-      </tbody>
-</table>
-<div class="row">
-      <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block edit_user_id" do %>
-      <i class="fas fa-user-cog" aria-hidden="true"></i>
-      <% end %>
-</div>
-
-  <h2>New book</h2>
-  
-  <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
-  
-  <% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this book from being saved: %>
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
-
-  <%= form_with model: @book, method: :post do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-	
-  <h4>Body</h4>
-  <%= f.text_area:body %>
-	
-	<h5>
-  <%= f.submit 'Create Book' %>
-  <% end %>
-  <h5>
-  </thead>
-  <tbody>
-  <h1>Books</h1>
-  <table width='750'>
-  <thead>
-    <th width='200'></th>
-    <th width='400'>Title</th>
-    <th colspan="3" width='150'>Body</th>
-  </thead>
-  
-  <th>
-  <% @books.each do |book| %>
-  <tr>
-    <td>
-      <%= link_to user_path(book.user.id) do %>
-      <%= image_tag book.user.get_profile_image(100,100) %>
-      <% end %>
-    </td>
-  　<td><span><%= link_to book.title,book_path(book.id)%></span></td>
-  　<td><span><%= book.body %></span></td>
-  </tr>
-  <% end %>
-  <th>
-  </table>
-  </tbody>
-</table>
+          <% end %>
+     </table>
     </div>
   </div>
 </div>
-
-</main>
